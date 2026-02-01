@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Frauds Awareness Portal – India</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(90deg, #d89b2d, #3a8f1c);
+      color: #fff;
+      text-align: center;
+      padding: 22px 10px;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      background: #0d47a1;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 12px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background: #1e88e5;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    nav button:hover {
+      background: #1a237e;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    .section {
+      display: none;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    h2 { color: #0d47a1; margin-bottom: 15px; }
+    h3 { margin-top: 15px; margin-bottom: 8px; }
+    p { margin-bottom: 12px; line-height: 1.6; }
+    ul { margin-left: 20px; margin-bottom: 15px; }
+
+    .alert {
+      background: #fff3e0;
+      border-left: 6px solid #ef6c00;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #e8eaf6;
+      color: #1a237e;
+    }
+
+    footer {
+      background: #222;
+      color: #ddd;
+      text-align: center;
+      padding: 14px;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header { font-size: 20px; }
+      nav button { font-size: 14px; padding: 10px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  Financial Frauds Awareness Portal – Digital Police (India)
+</header>
+
+<nav>
+  <button onclick="showSection('info')">Fraud Information</button>
+  <button onclick="showSection('how')">How It Happens</button>
+  <button onclick="showSection('precautions')">Precautions</button>
+  <button onclick="showSection('cases')">Reported Cases</button>
+</nav>
+
+<div class="container">
+
+  <div id="info" class="section active">
+    <h2>What Are Financial Frauds?</h2>
+    <p>Financial frauds involve dishonest activities carried out to illegally obtain money, assets, or sensitive financial information from individuals or organizations. With increasing digital payments and online banking in India, financial fraud cases have significantly increased.</p>
+
+    <h3>Common Financial Frauds in India</h3>
+    <ul>
+      <li>Investment & trading scams</li>
+      <li>Fake loan and instant credit app fraud</li>
+      <li>Credit/Debit card fraud</li>
+      <li>Insurance and policy renewal scams</li>
+      <li>SIM swap and identity theft</li>
+    </ul>
+  </div>
+
+  <div id="how" class="section">
+    <h2>How Financial Frauds Happen</h2>
+    <ul>
+      <li>Creating fear or urgency such as account suspension or legal action</li>
+      <li>Impersonating banks, RBI, police, or government departments</li>
+      <li>Fake websites, mobile apps, and social media advertisements</li>
+      <li>Phishing messages collecting personal and banking information</li>
+      <li>Misuse of leaked data from online platforms</li>
+    </ul>
+
+    <div class="alert">
+      <strong>Warning:</strong> Fraudsters often promise guaranteed returns or instant benefits to trap victims.
+    </div>
+  </div>
+
+  <div id="precautions" class="section">
+    <h2>Precautions & Safety Measures</h2>
+    <ul>
+      <li>Never share OTP, PIN, CVV, or passwords with anyone</li>
+      <li>Verify investment schemes with SEBI-registered entities</li>
+      <li>Download apps only from official app stores</li>
+      <li>Enable SMS and email alerts for bank transactions</li>
+      <li>Immediately report fraud to helpline <strong>1930</strong></li>
+    </ul>
+  </div>
+
+  <div id="cases" class="section">
+    <h2>Reported Financial Fraud Cases</h2>
+    <table>
+      <tr>
+        <th>Case ID</th>
+        <th>Fraud Type</th>
+        <th>State</th>
+        <th>Loss Amount</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>FIN-IND-2301</td>
+        <td>Fake Investment Scheme</td>
+        <td>Telangana</td>
+        <td>₹1,20,000</td>
+        <td>Under Investigation</td>
+      </tr>
+      <tr>
+        <td>FIN-IND-2418</td>
+        <td>Loan App Fraud</td>
+        <td>Tamil Nadu</td>
+        <td>₹65,000</td>
+        <td>Resolved</td>
+      </tr>
+      <tr>
+        <td>FIN-IND-2560</td>
+        <td>SIM Swap Fraud</td>
+        <td>Uttar Pradesh</td>
+        <td>₹90,000</td>
+        <td>Pending</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  © Government of India | Cyber Crime & Financial Fraud Awareness Initiative
+</footer>
+
+<script>
+  function showSection(id) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+
+</body>
+</html>

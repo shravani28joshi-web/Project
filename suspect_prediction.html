@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrimeTracker Dashboard</title>
+
+<style>
+/* ---------- GLOBAL ---------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+/* ---------- HEADER ---------- */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 30px;
+    background: linear-gradient(90deg, #f7941d, #6fa843);
+    color: #fff;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- HAMBURGER ---------- */
+.hamburger {
+    font-size: 28px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+/* ---------- SIDEBAR ---------- */
+.right-sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 260px;
+    height: 100vh;
+    background: #e9edf3;
+    padding-top: 90px;
+    transition: right 0.35s ease;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.right-sidebar.open {
+    right: 0;
+}
+
+.right-sidebar a {
+    display: block;
+    padding: 14px 22px;
+    margin: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.right-sidebar a:hover {
+    background: #f7941d;
+    color: #fff;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+.container {
+    padding: 35px;
+}
+
+.main-title {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* ---------- DASHBOARD LAYOUT ---------- */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+/* ---------- CARDS ---------- */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 22px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* ---------- PREDICTION ---------- */
+.prediction-overview {
+    display: flex;
+    gap: 20px;
+}
+
+.confidence-score {
+    flex: 1;
+    text-align: center;
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.score-number {
+    font-size: 44px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.key-factors {
+    flex: 1;
+}
+
+.factor-tag {
+    display: inline-block;
+    background: #6fa843;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin: 5px 5px 0 0;
+}
+
+/* ---------- SUPPORTING DATA ---------- */
+.tab-menu {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.tab-menu button {
+    border: none;
+    background: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #777;
+}
+
+.tab-menu .active {
+    color: #f7941d;
+    border-bottom: 2px solid #f7941d;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item-title {
+    font-weight: bold;
+}
+
+.item-description {
+    font-size: 14px;
+    color: #666;
+}
+
+.drill-down-button {
+    border: 1px solid #f7941d;
+    background: none;
+    color: #f7941d;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.drill-down-button:hover {
+    background: #f7941d;
+    color: #fff;
+}
+
+/* ---------- SIDEBAR CARDS ---------- */
+.risk-bar {
+    height: 10px;
+    border-radius: 6px;
+    background: linear-gradient(to right, #28a745, #ffc107, #dc3545);
+    margin: 15px 0;
+    position: relative;
+}
+
+.risk-bar-indicator {
+    position: absolute;
+    top: -10px;
+    left: 85%;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #000;
+}
+
+.action-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.generate-report {
+    background: #6fa843;
+    border: none;
+    color: white;
+}
+
+.request-analysis {
+    background: none;
+    border: 1px solid #6fa843;
+    color: #6fa843;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="navbar">
+    <div class="logo">CrimeTracker</div>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Feedback</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="hamburger" id="hamburgerBtn">&#9776;</div>
+</header>
+
+<!-- SIDEBAR -->
+<div class="right-sidebar" id="rightSidebar">
+    <a href="Cases-overview.html">Cases Overview</a>
+    <a href="suspect_prediction.html">Suspects</a>
+    <a href="Admin_Panel.html">Admin</a>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+    <h1 class="main-title">Suspect Prediction</h1>
+    <p class="subtitle">AI-driven insights based on behavioral analysis and historical data.</p>
+
+    <div class="dashboard-layout">
+
+        <div>
+            <div class="card">
+                <div class="card-header">Prediction Overview</div>
+                <div class="prediction-overview">
+                    <div class="confidence-score">
+                        <div class="score-number">85%</div>
+                        Confidence Score
+                    </div>
+                    <div class="key-factors">
+                        <div class="card-header">Key Factors</div>
+                        <span class="factor-tag">Behavioral Patterns</span>
+                        <span class="factor-tag">Historical Data</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:20px;">
+                <div class="card-header">Supporting Data</div>
+
+                <div class="tab-menu">
+                    <button class="active">Behavioral Analysis</button>
+                    <button>Historical Data</button>
+                </div>
+
+                <div class="data-item">
+                    <div>
+                        <div class="item-title">Unusual Communication Patterns</div>
+                        <div class="item-description">Erratic communication before incident.</div>
+                    </div>
+                    <button class="drill-down-button">Drill Down</button>
+                </div>
+
+                <div class="data-item">
+                    <div>
+                        <div class="item-title">Anomalous Financial Transactions</div>
+                        <div class="item-description">Unexplained withdrawals detected.</div>
+                    </div>
+                    <button class="drill-down-button">Drill Down</button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="card">
+                <div class="card-header">Risk Meter</div>
+                <div class="risk-bar">
+                    <div class="risk-bar-indicator"></div>
+                </div>
+                <b>Overall Risk: 85%</b>
+            </div>
+
+            <div class="card" style="margin-top:20px;">
+                <div class="card-header">Actions</div>
+                <button class="action-button generate-report">Generate Full Report</button>
+                <button class="action-button request-analysis">Request Further Analysis</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const hamburger = document.getElementById("hamburgerBtn");
+const sidebar = document.getElementById("rightSidebar");
+
+hamburger.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+});
+</script>
+
+</body>
+</html>

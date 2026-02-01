@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crime Against Women Portal – Digital Police</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #d89b2d, #3a8f1c);
+      color: #fff;
+      text-align: center;
+      padding: 22px 10px;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* Navigation */
+    nav {
+      background: #0d47a1;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 12px;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background: #1e88e5;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    nav button:hover {
+      background: #1565c0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    .section {
+      display: none;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+
+    .section.active { display: block; }
+
+    h2 { color: #0d47a1; margin-bottom: 15px; }
+    h3 { margin-top: 15px; margin-bottom: 8px; }
+    p { margin-bottom: 12px; line-height: 1.6; }
+    ul { margin-left: 20px; margin-bottom: 15px; }
+
+    .alert {
+      background: #fff3e0;
+      border-left: 6px solid #ef6c00;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    footer {
+      background: #222;
+      color: #ddd;
+      text-align: center;
+      padding: 14px;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header { font-size: 20px; }
+      nav button { font-size: 14px; padding: 10px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  Crime Against Women Portal – Digital Police (India)
+</header>
+
+<nav>
+  <button onclick="showSection('info')">Awareness & Info</button>
+  <button onclick="showSection('types')">Types of Crimes</button>
+  <button onclick="showSection('rights')">Women Safety & Rights</button>
+  <button onclick="showSection('cases')">Reported Cases</button>
+</nav>
+
+<div class="container">
+
+  <!-- Info Section -->
+  <div id="info" class="section active">
+    <h2>About Crimes Against Women</h2>
+    <p>Crimes against women include acts of violence, harassment, exploitation, and discrimination that threaten the safety, dignity, and rights of women. Addressing these crimes is a priority under Indian law and the Digital Police initiative.</p>
+
+    <div class="alert">
+      <strong>Emergency:</strong> Dial <strong>112</strong> for immediate police help | Women Helpline: <strong>181</strong>
+    </div>
+  </div>
+
+  <!-- Types Section -->
+  <div id="types" class="section">
+    <h2>Common Crimes Against Women</h2>
+    <ul>
+      <li>Domestic violence</li>
+      <li>Sexual harassment & assault</li>
+      <li>Cyber stalking and online harassment</li>
+      <li>Dowry-related harassment</li>
+      <li>Human trafficking</li>
+      <li>Workplace harassment</li>
+    </ul>
+  </div>
+
+  <!-- Rights Section -->
+  <div id="rights" class="section">
+    <h2>Women Safety & Legal Rights</h2>
+    <ul>
+      <li>Right to file FIR at any police station (Zero FIR)</li>
+      <li>Right to privacy and confidentiality</li>
+      <li>Protection under IPC & IT Act</li>
+      <li>Free legal aid and medical assistance</li>
+      <li>Right to report cyber crimes online</li>
+    </ul>
+    <p>If you face harassment or violence, report it immediately to ensure safety and justice.</p>
+  </div>
+
+  <!-- Cases Section -->
+  <div id="cases" class="section">
+    <h2>Reported Cases</h2>
+    <table>
+      <tr>
+        <th>Case ID</th>
+        <th>Crime Type</th>
+        <th>State</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>WOM-IND-3012</td>
+        <td>Domestic Violence</td>
+        <td>Maharashtra</td>
+        <td>Under Investigation</td>
+      </tr>
+      <tr>
+        <td>WOM-IND-3178</td>
+        <td>Cyber Harassment</td>
+        <td>Karnataka</td>
+        <td>Resolved</td>
+      </tr>
+      <tr>
+        <td>WOM-IND-3290</td>
+        <td>Workplace Harassment</td>
+        <td>Delhi</td>
+        <td>Pending</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  © Government of India | Crime Against Women Awareness Portal
+</footer>
+
+<script>
+  function showSection(id) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+
+</body>
+</html>

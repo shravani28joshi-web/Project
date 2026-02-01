@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrimeTracker – Evidence Management</title>
+
+<style>
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* ================= HEADER ================= */
+header {
+    width: 100%;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #f7941d, #6da544);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburger {
+    width: 36px;
+    height: 26px;
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* ================= RIGHT SIDEBAR ================= */
+.right-sidebar {
+    width: 260px;
+    height: 100vh;
+    background: #e9edf3;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    padding: 80px 20px 20px;
+    transition: right 0.35s ease;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+    z-index: 999;
+}
+
+.right-sidebar.open {
+    right: 0;
+}
+
+.close-btn {
+    font-size: 26px;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.right-sidebar a {
+    display: block;
+    padding: 12px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.right-sidebar a:hover {
+    background: #f7941d;
+    color: white;
+}
+
+/* ================= MAIN CONTAINER ================= */
+.main-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* ================= BUTTONS & SEARCH ================= */
+.update-btn {
+    padding: 12px 20px;
+    background: #3b78ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+.search-bar button {
+    padding: 10px 16px;
+    background: #3b78ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ================= CASE CARDS ================= */
+.case-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+    padding: 25px;
+}
+
+.case-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h3 {
+    background: #e8eef7;
+    padding: 8px 12px;
+    border-left: 5px solid #2563eb;
+    font-size: 15px;
+}
+
+.section p, .section li {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+.evidence-link {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <span>CrimeTracker</span>
+    <span class="hamburger" id="hamburgerBtn">☰</span>
+</header>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="right-sidebar" id="rightSidebar">
+    <span class="close-btn" id="closeSidebar">✕</span>
+    <a href="Cases-overview.html">New Cases</a>
+    <a href="suspect_prediction.html">Suspects</a>
+    <a href="Admin_Panel.html">Admin</a>
+    <a href="REport.html">Reports</a>
+</div>
+
+<h1>Case History & Evidences</h1>
+
+<button class="update-btn" id="updateEvidenceBtn">
+    Update Evidence
+</button>
+
+
+<!-- ================= CASE 1 ================= -->
+<div class="case-card">
+    <div class="case-title">Case 1: Financial Fraud</div>
+
+    <div class="section">
+        <h3>Crime Details</h3>
+        <p>
+            Online financial fraud involving phishing email posing as a bank alert.
+            Unauthorized access to victim’s bank account and illegal fund transfer.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>FIR Details</h3>
+        <p>
+            <strong>FIR No:</strong> 112/2025<br>
+            <strong>Police Station:</strong> Versova Police Station, Andheri<br>
+            <strong>Date:</strong> 12 March 2025<br>
+            <strong>Sections:</strong> Section 43 IT Act, Section 420 IPC
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Victim Details</h3>
+        <p>
+            <strong>Name:</strong> Jayesh Dev<br>
+            <strong>Age:</strong> 27<br>
+            <strong>Address:</strong> Borivali West, Mumbai<br>
+            <strong>Contact:</strong> 981265784536
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Suspect Details</h3>
+        <p>
+            <strong>Status:</strong> Unknown (Under Investigation)<br>
+            <strong>Mode:</strong> Phishing email<br>
+            <strong>IP Address:</strong> Under analysis<br>
+            <strong>Bank Account:</strong> Mule account (Frozen)
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Evidences</h3>
+        <ul>
+            <li>Phishing email screenshots
+                <a class="evidence-link" href="https://security.virginia.edu/sites/security/files/styles/scale_600/public/phish%20image_0.png" target="_blank">View</a>
+            </li>
+            <li>Bank transaction history</li>
+            <li>IP logs from email service provider</li>
+            <li>Victim’s mobile device</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Reports</h3>
+        <p>
+            <strong>Biometric:</strong> Not applicable (Digital crime)<br>
+            <strong>Medical:</strong> Not required
+        </p>
+    </div>
+</div>
+
+<!-- ================= CASE 2 ================= -->
+<div class="case-card">
+    <div class="case-title">Case 2: Robbery</div>
+
+    <div class="section">
+        <h3>Crime Details</h3>
+        <p>
+            Robbery involving use of criminal force and knife to threaten victim and steal valuables.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>FIR Details</h3>
+        <p>
+            <strong>FIR No:</strong> 312/2025<br>
+            <strong>Police Station:</strong> City Police Station<br>
+            <strong>Date:</strong> 15 March 2025<br>
+            <strong>Sections:</strong> 390, 392, 397 IPC
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Victim Details</h3>
+        <p>
+            <strong>Name:</strong> Arnav Khond<br>
+            <strong>Age:</strong> 4<br>
+            <strong>Address:</strong> Kandivali East, Mumbai
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Suspect Details</h3>
+        <p>
+            <strong>Status:</strong> Arrested<br>
+            <strong>Accused:</strong> Two persons<br>
+            <strong>Weapon:</strong> Knife<br>
+            <strong>Escape Vehicle:</strong> MH-04-KV-5436
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Evidences</h3>
+        <ul>
+            <li>Victim statement</li>
+            <li>CCTV footage</li>
+            <li>Recovered knife</li>
+            <li>Fingerprint evidence</li>
+            <li>Seized stolen items</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Reports</h3>
+        <p>
+            <strong>Biometric:</strong> Fingerprint analysis (Partial match found)<br>
+            <strong>Medical:</strong> Simple injury report of victim
+        </p>
+    </div>
+</div>
+
+<!-- ================= CASE 3 ================= -->
+<div class="case-card">
+    <div class="case-title">Case 3: Homicide/Murder</div>
+
+    <div class="section">
+        <h3>Crime Details</h3>
+        <p>
+            Victim found dead with blunt force trauma. Signs of forced entry observed.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>FIR Details</h3>
+        <p>
+            <strong>FIR No:</strong> 2025/1123<br>
+            <strong>Police Station:</strong> Green Street Police Station<br>
+            <strong>Date:</strong> 16 November 2025
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Victim Details</h3>
+        <p>
+            <strong>Name:</strong> Priya Sharma<br>
+            <strong>Age:</strong> 32<br>
+            <strong>Occupation:</strong> School Teacher
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Suspect Details</h3>
+        <p>
+            <strong>Name:</strong> Rohit Verma<br>
+            <strong>Relation:</strong> Ex-boyfriend<br>
+            <strong>Status:</strong> Arrested
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Evidences</h3>
+        <ul>
+            <li>Blood-stained metal pipe</li>
+            <li>Fingerprint evidence</li>
+            <li>CCTV footage</li>
+            <li>Footprints</li>
+            <li>Victim’s mobile phone</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Reports</h3>
+        <p>
+            <strong>Postmortem:</strong> Confirms blunt force trauma<br>
+            <strong>Forensic:</strong> Blood and fingerprint match<br>
+            <strong>Digital:</strong> Threatening messages recovered
+        </p>
+    </div>
+</div>
+
+<!-- ================= CASE 4 ================= -->
+<div class="case-card">
+    <div class="case-title">Case 4: Extortion</div>
+
+    <div class="section">
+        <h3>Crime Details</h3>
+        <p>
+            Repeated threats demanding ₹5,00,000 through calls and emails.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>FIR Details</h3>
+        <p>
+            <strong>FIR No:</strong> 2025/1189<br>
+            <strong>Police Station:</strong> Andheri East Police Station<br>
+            <strong>Date:</strong> 11 December 2025
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Victim Details</h3>
+        <p>
+            <strong>Name:</strong> Sameer Kapoor<br>
+            <strong>Age:</strong> 42<br>
+            <strong>Occupation:</strong> Business Owner
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Suspect Details</h3>
+        <p>
+            <strong>Status:</strong> Unknown<br>
+            <strong>Method:</strong> Multiple phone numbers and emails<br>
+            <strong>IP Trace:</strong> Multiple locations
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Evidences</h3>
+        <ul>
+            <li>Email threat screenshots</li>
+            <li>Call logs and voicemails</li>
+            <li>Bank transaction details</li>
+            <li>Digital device analysis</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Reports</h3>
+        <p>
+            <strong>Digital Forensics:</strong> IP and email header analysis<br>
+            <strong>Financial:</strong> Money trail investigation ongoing<br>
+            <strong>Voice Analysis:</strong> Voice profiling in progress
+        </p>
+    </div>
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.getElementById("rightSidebar");
+    const openBtn = document.getElementById("hamburgerBtn");
+    const closeBtn = document.getElementById("closeSidebar");
+    const uploadBtn = document.getElementById("uploadEvidenceBtn");
+
+    openBtn.addEventListener("click", () => sidebar.classList.add("open"));
+    closeBtn.addEventListener("click", () => sidebar.classList.remove("open"));
+
+    // ✅ Redirect to Evidence Management page
+    uploadBtn.addEventListener("click", () => {
+        window.location.href = "Upload-Evidence.html";
+
+        if (uploadBtn) {
+        uploadBtn.addEventListener("click", () => {
+            window.location.href = "Upload-Evidence.html";
+        });
+    }
+
+    // ✅ NEW: Update Evidence button
+    if (updateBtn) {
+        updateBtn.addEventListener("click", () => {
+            window.location.href = "Update-Evidence.html";
+        });
+    }
+    });
+});
+</script>
+
+
+</body>
+</html>

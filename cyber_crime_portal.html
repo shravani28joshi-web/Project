@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cyber Crime Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(to right, #ff9933, #138808);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* BUTTONS */
+.button-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.btn {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background: #1f4ed8;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #163db8;
+}
+
+/* SECTIONS */
+.section {
+    display: none;
+    padding: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* ACCORDION */
+.cyber-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.card {
+    border: 1px solid #dcdfe3;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    background: #ffffff;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card-header {
+    padding: 18px 22px;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card-header:hover {
+    background: #f3f6fb;
+}
+
+.arrow {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Hidden content */
+.card-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 22px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+/* Expanded */
+.card.active {
+    background: #dbeafe;
+}
+
+.card.active .card-content {
+    max-height: 300px;
+    padding: 15px 22px 20px;
+}
+
+.card.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* FOOTER */
+footer {
+    background: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    CYBER CRIME PORTAL – DIGITAL POLICE
+</header>
+
+<div class="button-container">
+    <button class="btn" onclick="showCases()">View Cases</button>
+    <button class="btn" onclick="showLearn()">Learn About Cyber Crime</button>
+</div>
+
+<!-- VIEW CASES -->
+<div id="cases" class="section">
+    <h2>Cyber Crime Cases</h2>
+    <p style="text-align:center;">
+        This section can be connected to your backend later.
+    </p>
+</div>
+
+<!-- LEARN ABOUT CYBER CRIME -->
+<div id="learn" class="section">
+    <h2>Learn About Cyber Crime</h2>
+
+    <div class="cyber-container">
+
+        <div class="card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span>1. Viruses, Worms and Trojans</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-content">
+                Malware that damages systems, spreads automatically, or disguises itself as legitimate software.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span>2. Cyber Phishing</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-content">
+                Fraudulent emails or websites used to steal passwords, OTPs, and banking details.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span>3. Cyber Vishing</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-content">
+                Voice-based fraud where attackers impersonate officials or banks.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span>4. SIM Swap Scam</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-content">
+                Fraudsters take control of a victim’s mobile number to access OTPs and bank accounts.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span>5. Spamming</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-content">
+                Sending unsolicited bulk messages containing malicious or fraudulent content.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span>6. Online Job Frauds</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-content">
+                Fake job offers demanding fees or personal information.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span>7. Cyber Stalking</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-content">
+                Repeated online harassment or monitoring through digital platforms.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    © Government of India | Cyber Crime Awareness Portal
+</footer>
+
+<script>
+function showCases() {
+    document.getElementById("cases").style.display = "block";
+    document.getElementById("learn").style.display = "none";
+}
+
+function showLearn() {
+    document.getElementById("learn").style.display = "block";
+    document.getElementById("cases").style.display = "none";
+}
+
+function toggleCard(header) {
+    const card = header.parentElement;
+
+    document.querySelectorAll(".card").forEach(c => {
+        if (c !== card) c.classList.remove("active");
+    });
+
+    card.classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

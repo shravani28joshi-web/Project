@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrimeTracker Alerts</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ---------- GLOBAL ---------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+/* ---------- HEADER ---------- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 30px;
+    background: linear-gradient(90deg, #f7941d, #6fa843);
+    color: #fff;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- HAMBURGER ---------- */
+.hamburger {
+    font-size: 28px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* ---------- RIGHT SIDEBAR ---------- */
+.right-sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 260px;
+    height: 100vh;
+    background: #e9edf3;
+    padding-top: 90px;
+    transition: right 0.35s ease;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.right-sidebar.open {
+    right: 0;
+}
+
+.right-sidebar a {
+    display: block;
+    padding: 14px 22px;
+    margin: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.right-sidebar a:hover {
+    background: #f7941d;
+    color: #fff;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+.container {
+    padding: 30px;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.filter-buttons button {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 8px 14px;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.filter-buttons .mark-read {
+    border: none;
+    background: none;
+    color: #6fa843;
+    font-weight: bold;
+}
+
+/* ---------- ALERTS ---------- */
+.alert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.alert-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: flex-start;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.alert-icon {
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.alert-content {
+    flex: 1;
+}
+
+.alert-title {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.alert-urgency {
+    font-size: 13px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.high { background: #f8d7da; color: #dc3545; }
+.medium { background: #fff3cd; color: #ffc107; }
+.low { background: #d1ecf1; color: #0dcaf0; }
+
+.alert-description {
+    color: #555;
+    margin-top: 5px;
+}
+
+.alert-timestamp {
+    font-size: 13px;
+    color: #777;
+    margin-left: 20px;
+    white-space: nowrap;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="navbar">
+    <div class="logo">CrimeTracker</div>
+
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Feedback</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="hamburger" id="hamburgerBtn">
+        <i class="fas fa-bars"></i>
+    </div>
+</header>
+
+<!-- RIGHT SIDEBAR -->
+<div class="right-sidebar" id="rightSidebar">
+    <a href="#">New Cases</a>
+    <a href="#">Suspects</a>
+    <a href="#">Cyber Crime Portal</a>
+    <a href="#">Admin</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <div class="header-section">
+        <h1 class="page-title">Alerts & Notifications</h1>
+        <div class="filter-buttons">
+            <button>Filter by Urgency <i class="fas fa-chevron-down"></i></button>
+            <button>Filter by Type <i class="fas fa-chevron-down"></i></button>
+            <button class="mark-read">Mark all as read</button>
+        </div>
+    </div>
+
+    <div class="alert-list">
+
+        <div class="alert-card">
+            <div class="alert-icon" style="color:#dc3545;"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="alert-content">
+                <div class="alert-title">
+                    New Suspect Prediction
+                    <span class="alert-urgency high">High Urgency</span>
+                </div>
+                <div class="alert-description">A new high-probability suspect identified for Case #12345.</div>
+            </div>
+            <div class="alert-timestamp">2 hours ago</div>
+        </div>
+
+        <div class="alert-card">
+            <div class="alert-icon" style="color:#ffc107;"><i class="fas fa-file-alt"></i></div>
+            <div class="alert-content">
+                <div class="alert-title">
+                    Critical Case Update
+                    <span class="alert-urgency medium">Medium Urgency</span>
+                </div>
+                <div class="alert-description">New forensic evidence added to Case #67890.</div>
+            </div>
+            <div class="alert-timestamp">1 day ago</div>
+        </div>
+
+        <div class="alert-card">
+            <div class="alert-icon" style="color:#0dcaf0;"><i class="fas fa-info-circle"></i></div>
+            <div class="alert-content">
+                <div class="alert-title">
+                    System Warning
+                    <span class="alert-urgency low">Low Urgency</span>
+                </div>
+                <div class="alert-description">System maintenance scheduled tomorrow at 2 AM.</div>
+            </div>
+            <div class="alert-timestamp">2 days ago</div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const hamburger = document.getElementById("hamburgerBtn");
+const sidebar = document.getElementById("rightSidebar");
+
+hamburger.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+});
+</script>
+
+</body>
+</html>

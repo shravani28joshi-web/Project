@@ -1,0 +1,72 @@
+<!-- LOGIN VERSION 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrimeTracker Login</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear blue(to right, #0f2027, #203a43, #2c5364);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .login-box {
+        background: #1b1b2f;
+        padding: 80px;
+        border-radius: 30px;
+        text-align: center;
+        width: 400px;
+    }
+     input {
+        width: 90%;
+        padding: 10px;
+        margin: 20px 0;
+        border: none;
+        border-radius: 5px;
+        margin-top: 1px;
+    }
+   
+    button {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-top:15px;
+       
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    .forgot {
+        color: #9ecfff;
+        font-size: 0.9em;
+        display: block;
+        margin-top: 5px;
+        margin-top: 20px
+    }
+</style>
+</head>
+<body>
+
+<div class="login-box">
+    <form action="/post" method="post">
+    <div>CrimeTracker</div>
+    <p>Secure Login</p>
+
+    <input type="text" name="name" placeholder="Username" required><br>
+    <input type="password" name="password" placeholder="Password" required><br>
+
+    <button type="submit">Login</button>
+    </form>
+
+</div>
+
+
+</body>
+</html>

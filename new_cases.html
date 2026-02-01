@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create New Case - CrimeTracker</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1f2937;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: linear-gradient(90deg, #f97316, #22c55e);
+      border-radius: 0 0 12px 12px;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    header nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p.desc {
+      color: #4b5563;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: #f3f4f6;
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      background-color: #f97316;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ea580c;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>CrimeTracker</h1>
+  <nav>
+    <a href="Dashboard.html">Dashboard</a>
+    <a href="Cases-overview.html">Cases</a>
+    <a href="Suspect_Prediction.stml.html">Suspects</a>
+    <a href="Evidence_management.html">Evidence</a>
+    <a href="REport.html">Reports</a>
+    <a href="Pattern_analysis.html">Analytics</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h2>Create New Case</h2>
+  <p class="desc">Fill in the details below to register a new case.</p>
+
+  <!-- ✅ CONNECTED TO BACKEND -->
+  <form action="/create-case" method="POST">
+
+    <!-- Case Details -->
+    <div class="card">
+      <h3>Case Details</h3>
+
+      <div class="form-group">
+        <label>Case ID</label>
+        <input type="text" name="caseId" placeholder="Enter Case ID" required />
+      </div>
+
+      <div class="form-group">
+        <label>Case Title</label>
+        <input type="text" name="caseTitle" placeholder="Short title of the case" />
+      </div>
+
+      <div class="form-group">
+        <label>Date & Time of Incident</label>
+        <input type="datetime-local" name="incidentDateTime" />
+      </div>
+
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" name="location" placeholder="Incident location" />
+      </div>
+    </div>
+
+    <!-- Investigating Officers -->
+    <div class="card">
+      <h3>Investigating Officers</h3>
+      <textarea name="officers" placeholder="List all investigating officers involved"></textarea>
+    </div>
+
+    <!-- FIR Statements -->
+    <div class="card">
+      <h3>FIR Statements</h3>
+      <textarea name="firDescription" placeholder="Enter FIR summary or details"></textarea>
+    </div>
+
+    <!-- Suspect Details -->
+    <div class="card">
+      <h3>Suspect Details</h3>
+      <textarea name="suspects" placeholder="Enter suspect names, background, known associates, etc."></textarea>
+    </div>
+
+    <!-- Crime Details -->
+    <div class="card">
+      <h3>Crime Details</h3>
+      <textarea name="crimeDescription" placeholder="Describe the crime in detail"></textarea>
+    </div>
+
+    <!-- Witness Details -->
+    <div class="card">
+      <h3>Witness Details</h3>
+      <textarea name="witnesses" placeholder="Enter witness names, statements, contact details, etc."></textarea>
+    </div>
+
+    <button type="submit">Save Case</button>
+
+  </form>
+</div>
+
+</body>
+</html>

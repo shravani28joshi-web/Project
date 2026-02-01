@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrimeTracker – Behavioral Pattern Analysis</title>
+
+<style>
+/* ---------------- GLOBAL ---------------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+/* ---------------- HEADER ---------------- */
+header {
+    width: 100%;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #f7941d, #6da544);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ---------------- HAMBURGER ---------------- */
+.hamburger {
+    font-size: 28px;
+    cursor: pointer;
+     margin-right: 30px;
+}
+
+/* ---------------- RIGHT SIDEBAR ---------------- */
+.right-sidebar {
+    width: 260px;
+    height: 100vh;
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    padding: 90px 20px 20px;
+    transition: right 0.35s ease;
+    z-index: 999;
+    box-shadow: -4px 0 14px rgba(0,0,0,0.15);
+}
+
+.right-sidebar.open {
+    right: 0;
+}
+
+.right-sidebar a {
+    display: block;
+    padding: 14px;
+    margin-top: 12px;
+    color: #222;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.right-sidebar a:hover,
+.right-sidebar a.active {
+    background: #f7941d;
+    color: white;
+}
+
+/* ---------------- MAIN CONTENT ---------------- */
+.main {
+    padding: 40px;
+}
+
+h1, h2 {
+    margin-top: 0;
+}
+
+/* ---------------- SEARCH & FILTERS ---------------- */
+.search-bar input {
+    width: 70%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.filters {
+    display: flex;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.filters select {
+    padding: 12px;
+    width: 200px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: white;
+}
+
+/* ---------------- STATS ---------------- */
+.stats-grid {
+    display: flex;
+    gap: 40px;
+    margin-top: 25px;
+}
+
+.stat-box {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    width: 220px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.stat-box h3 {
+    font-size: 28px;
+}
+
+.positive { color: #28a745; }
+.negative { color: #dc3545; }
+
+/* ---------------- SECTION BOX ---------------- */
+.section-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-top: 35px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* ---------------- HEATMAP ---------------- */
+.heatmap {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(to bottom right, #e9edf3, #cfd8e3);
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+/* ---------------- TABLE ---------------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th, table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background: #003366;
+    color: white;
+}
+
+/* ---------------- TIMELINE ---------------- */
+.timeline {
+    max-height: 180px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.timeline-item {
+    padding: 10px;
+    border-left: 4px solid #f7941d;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    border-radius: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <span>CrimeTracker</span>
+    <div class="hamburger" id="hamburgerBtn">☰</div>
+</header>
+
+<!-- RIGHT SIDEBAR -->
+<div class="right-sidebar" id="rightSidebar">
+    <a href="Dashboard.html">Dashboard</a>
+    <a href="suspect_prediction.html">Suspects</a>
+    <a href="Admin_Panel.html">Admin</a>
+    <a href="REport.html">Reports</a>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+    <h1>Behavioral Pattern Analysis</h1>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search for patterns or cases">
+    </div>
+
+    <div class="filters">
+    <!-- Crime Type -->
+    <select>
+        <option selected disabled>Crime Type</option>
+        <option>Theft</option>
+        <option>Cyber Crime</option>
+        <option>Assault</option>
+        <option>Fraud</option>
+        <option>Homicide</option>
+    </select>
+
+    <!-- Location -->
+    <select>
+        <option selected disabled>Location</option>
+        <option>Downtown Area</option>
+        <option>Residential Zone</option>
+        <option>Commercial District</option>
+        <option>Industrial Area</option>
+        <option>Highway / Transit</option>
+    </select>
+
+    <!-- Time Range -->
+    <select>
+        <option selected disabled>Time Range</option>
+        <option>Last 24 Hours</option>
+        <option>Last 7 Days</option>
+        <option>Last 30 Days</option>
+        <option>Last 6 Months</option>
+        <option>Last 1 Year</option>
+    </select>
+</div>
+
+
+    <div class="stats-grid">
+        <div class="stat-box">
+            <h3>25% <span class="positive">+5%</span></h3>
+            <p>Crime Rate (30 days)</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>150 <span class="negative">-2%</span></h3>
+            <p>Crime Distribution</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>80 <span class="positive">+10%</span></h3>
+            <p>Suspect Behaviors</p>
+        </div>
+    </div>
+
+    <div class="section-box">
+        <h2>Suspicious Activity Heatmap</h2>
+        <div class="heatmap"></div>
+    </div>
+
+    <div class="section-box">
+        <h2>Behavior Frequency</h2>
+        <table>
+            <tr><th>Behavior</th><th>Occurrences</th><th>Severity</th></tr>
+            <tr><td>Hostility</td><td>48</td><td style="color:red;">High</td></tr>
+            <tr><td>Evasion</td><td>36</td><td style="color:orange;">Medium</td></tr>
+            <tr><td>Unusual Silence</td><td>29</td><td style="color:green;">Low</td></tr>
+        </table>
+    </div>
+
+    <div class="section-box">
+        <h2>Timeline of Behavioral Events</h2>
+        <div class="timeline">
+            <div class="timeline-item">10:45 AM – Abnormal eye movement</div>
+            <div class="timeline-item">01:12 PM – Stress spike detected</div>
+            <div class="timeline-item">03:20 PM – Attempted early exit</div>
+            <div class="timeline-item">05:40 PM – Aggressive gestures</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- JS -->
+<script>
+const hamburger = document.getElementById("hamburgerBtn");
+const sidebar = document.getElementById("rightSidebar");
+
+hamburger.onclick = () => {
+    sidebar.classList.toggle("open");
+};
+</script>
+
+</body>
+</html>

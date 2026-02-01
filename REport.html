@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrimeTracker - Report Generation</title>
+
+  <!-- Font Awesome for Map Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ---------------- GLOBAL ---------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: #ffffff; /* white theme */
+      color: #1f2937;
+    }
+
+    /* ---------------- HEADER ---------------- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: linear-gradient(90deg, #f97316, #22c55e); /* orange to green gradient */
+      border-bottom: 1px solid #e5e7eb;
+      border-radius: 0 0 12px 12px;
+      color: #ffffff;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    header nav a {
+      margin-left: 20px;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------------- CONTAINER ---------------- */
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p.desc {
+      color: #4b5563;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    /* ---------------- CARDS ---------------- */
+    .card {
+      background-color: #f3f4f6; /* light gray cards */
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #111827;
+    }
+
+    .card p.sub {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    /* ---------------- CHECKBOXES ---------------- */
+    .checkbox-group label {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      cursor: pointer;
+      color: #111827;
+      font-size: 15px;
+    }
+
+    .checkbox-group input {
+      margin-right: 10px;
+      margin-top: 3px;
+    }
+
+    .checkbox-group span.details {
+      color: #6b7280;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+
+    /* ---------------- BUTTONS ---------------- */
+    .btn-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    button {
+      padding: 10px 25px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background-color: #f97316; /* orange button */
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: #ea580c;
+    }
+
+    .btn-secondary {
+      background-color: #22c55e; /* green button */
+      color: #ffffff;
+    }
+
+    .btn-secondary:hover {
+      background-color: #16a34a;
+    }
+
+    /* ---------------- MAP BUTTON ---------------- */
+    .map-btn {
+      text-decoration: none;
+      background-color: #ffffff;
+      padding: 14px 22px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #f97316; /* orange icon/text */
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .map-btn i {
+      font-size: 26px;
+    }
+
+    .map-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>CrimeTracker</h1>
+    <nav>
+      <a href="Dashboard.html">Dashboard</a>
+      <a href="new_cases.html">Cases</a>
+      <a href="Suspect_Prediction.stml.html">Suspects</a>
+      <a href="Evidence_management.html">Evidence</a>
+      <a href="REport.html">Reports</a>
+      <a href="Pattern_analysis.html">Analytics</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Report Generation for Case #2024-007</h2>
+    <p class="desc">
+      Generate a comprehensive report for the selected case. Customize the content and format to meet your needs.
+    </p>
+
+    <div class="card">
+      <h3>Report Sections</h3>
+      <p class="sub">Select the sections to include in the final report.</p>
+
+      <div class="checkbox-group">
+        <label><input type="checkbox" checked> Case Details <span class="details">(ID, Date, Location, Description)</span></label>
+        <label><input type="checkbox" checked> Evidence Log <span class="details">(Item ID, Description, Location, Status)</span></label>
+        <label><input type="checkbox"> Suspect Profiles <span class="details">(Name, Age, Background, Associates)</span></label>
+        <label><input type="checkbox"> Behavioral Analysis <span class="details">(Risk Assessment, Predicted Actions)</span></label>
+        <label><input type="checkbox"> Investigative Timeline <span class="details">(Key Events, Dates, Outcomes)</span></label>
+      </div>
+    </div>
+
+    <!-- Google Maps Integration -->
+    <div class="card">
+      <h3>Case Location</h3>
+      <p class="sub">View the reported crime location directly in Google Maps.</p>
+
+      <a class="map-btn"
+         href="https://www.google.com/maps?q=crime+location"
+         target="_blank">
+        <i class="fa-solid fa-location-dot"></i>
+       Location
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>Report Format</h3>
+      <p class="sub">Choose the export format for your report.</p>
+
+      <div class="btn-row">
+        <button class="btn-primary">PDF</button>
+        <button class="btn-secondary">DOCX</button>
+        <button class="btn-secondary">TXT</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
